@@ -110,7 +110,7 @@ int main(int argc, char* argv[])
                         std::cout << "Invalid request" << std::endl;
                     }
                     int idx;
-                    Product* add;
+                    Product* add; 
                     if (ss >> idx ){
                        add = hits[idx]; 
                        ds.add_to_cart(user, add);
@@ -144,15 +144,33 @@ int main(int argc, char* argv[])
                 if(ss >> user ) {
                 user = convToLower(user);
                 std::vector<Product*> cart = ds.getCart(user); 
+                std::vector<Product*>::iterator vec; 
+
                 std::vector<Product*>::iterator it = cart.begin(); 
+                std::map<std::string, User*>::iterator usr; 
+
+                // get user 
+                User* curr_usr = ds.getUser(user); 
+
                 if (cart.size() != 0){
                     // iterate through cart 
-                    for ( ; it != cart.end(); ++it){
-                        
-                        // remove from cart, reduce qty by 1, debit price from user's credit 
-                        Product* item = *it; 
-                        // if in stock & if enough money 
-                        if (item->getQty() > 0 &&  )
+                    while ( it != cart.end() ){
+
+                        // remove from cart, reduce qty by 1, debit price from user's credit
+                        Product* buy = *it; 
+                        double price = buy->getPrice();  // prod price 
+                        double balance = curr_usr->getBalance(); // user avail money
+
+                        if ( buy->getQty() > 0 && balance >= price ){
+                            // decrease qty
+                            buy->subtractQty(1); 
+                            // debit to user
+                            curr_usr->deductAmount(price); 
+                            it = cart.erase(it);
+                        }
+                        else{
+                            ++it;
+                        }
                     }
 
 
@@ -163,6 +181,7 @@ int main(int argc, char* argv[])
                     std::cout << "Invalid username" << std::endl;
                 }
         }
+                
 
 
 
