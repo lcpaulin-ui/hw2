@@ -11,9 +11,8 @@
 class Movie : public Product {
 
 public: 
-    Movie();
-    Movie(const std::string& name, const std::string category, double price, int qty, 
-        std::string& genre, std::string& rating);
+    Movie(const std::string& genre, const std::string& rating, const std::string& category, 
+        const std::string& name, double price, int qty);
     virtual ~Movie(); 
     virtual std::set<std::string> keywords() const ;
     virtual std::string displayString () const;

@@ -6,12 +6,14 @@
 #include "movie.h"
 #include "product.h"
 
-Movie::Movie(const std::string& name, const std::string category, double price, int qty, 
-std::string& genre, std::string& rating): Product(category, name, price, qty), genre_(genre), rating_(rating) {
 
-    }
+
+Movie::Movie(const std::string& genre, const std::string& rating, const std::string& category, 
+    const std::string& name, double price, int qty): 
+    Product(category, name, price, qty), genre_(genre), rating_(rating) { 
+}
+
 Movie::~Movie () {}
-
 
 //     * Returns the appropriate keywords that this product should be associated with
 
