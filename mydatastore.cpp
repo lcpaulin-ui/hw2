@@ -9,7 +9,27 @@ MyDataStore::MyDataStore() {
 
 }
 
+// std::set<User*> users_;
+// std::map <std::string, User*> uname_match; 
+// std::set<Product*> products_;
+// std::map<std::string, std::set<Product*>> index; 
+// std::map<std::string, std::vector<Product*>> carts_; 
+// std::vector<Product*> hits; 
 MyDataStore::~MyDataStore() {
+
+    std::set<Product*>::iterator prod = products_.begin();
+    for ( ; prod != products_.end(); ++prod) {
+        delete *prod; 
+    }
+    products_.clear(); 
+
+    std::set<User*>::iterator it = users_.begin();
+    for ( ; it != users_.end(); ++it) {
+        delete *it; 
+    }
+    users_.clear();
+    carts_.clear();
+    uname_match.clear();  
 
 }
 
@@ -72,10 +92,10 @@ std::vector<Product*> MyDataStore::search(std::vector<std::string>& terms, int t
         if (it != index.end()){
             
             adding = it->second; 
-            if(type == 1){
+            if(type == 0){
                 result = setIntersection(result, adding); 
             }
-            else if (type == 2){
+            else if (type == 1 ){
                 result = setUnion(result, adding); 
             }
 
