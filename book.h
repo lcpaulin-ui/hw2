@@ -18,6 +18,7 @@ public:
     virtual std::set<std::string> keywords() const ;
     virtual std::string displayString () const;
     virtual void dump(std::ostream& os) const; 
+    virtual bool isMatch(std::vector<std::string>& searchTerms) const;
 
 private: 
     std::string author_;

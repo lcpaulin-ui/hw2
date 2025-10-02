@@ -12,6 +12,8 @@ Book::Book(const std::string& ISBN, const std::string& author, const std::string
         author_ = author; 
     }
 
+Book::~Book () {}
+
 
 //     * Returns the appropriate keywords that this product should be associated with
 
@@ -47,4 +49,8 @@ std::string Book::displayString () const {
 void Book::dump(std::ostream& os) const {
     os << category_  << "\n" << name_ << "\n" << price_ << "\n" << qty_ << std::endl;
 
+}
+
+bool Book::isMatch(std::vector<std::string>& searchTerms) const{
+    return false;
 }

@@ -150,7 +150,7 @@ int main(int argc, char* argv[])
                 std::map<std::string, User*>::iterator usr; 
 
                 // get user 
-                User* curr_usr = ds.getUser(user); 
+                User* curr_usr = ds.getUser(user);
 
                 if (cart.size() != 0){
                     // iterate through cart 

@@ -132,7 +132,7 @@ std::vector<Product*> MyDataStore::getCart(std::string uname){
 
 User* MyDataStore::getUser(std::string uname){
     std::map<std::string, User*>::iterator it = uname_match.begin(); 
-    User* usr; 
+    User* usr = nullptr; 
     it = uname_match.find(uname); 
     if (it != uname_match.end()){
         usr = it->second; 

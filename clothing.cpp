@@ -11,6 +11,7 @@ Clothing::Clothing(const std::string& size, const std::string& brand, const std:
         size_ = size;
         brand_ = brand; 
     }
+Clothing::~Clothing () {}
 
 
 //     * Returns the appropriate keywords that this product should be associated with
@@ -45,4 +46,8 @@ std::string Clothing::displayString () const {
 void Clothing::dump(std::ostream& os) const {
     os << category_  << "\n" << name_ << "\n" << price_ << "\n" << qty_ << std::endl;
 
+}
+
+bool Clothing::isMatch(std::vector<std::string>& searchTerms) const{
+    return false;
 }
