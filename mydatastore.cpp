@@ -29,9 +29,9 @@ void MyDataStore::addProduct(Product *p){
  */
 void MyDataStore::addUser(User* u){
     std::vector<Product*> prods; 
-    users_.insert(u);
     std::string uname = convToLower(u->getName()); 
-    carts_[uname] = prods; 
+    carts_[uname] = prods;
+    uname_match[uname] = u; 
 }
 
 /**
@@ -128,4 +128,14 @@ std::vector<Product*> MyDataStore::getCart(std::string uname){
         prods = it->second; 
     }
     return prods; 
+}
+
+User* MyDataStore::getUser(std::string uname){
+    std::map<std::string, User*>::iterator it = uname_match.begin(); 
+    User* usr; 
+    it = uname_match.find(uname); 
+    if (it != uname_match.end()){
+        usr = it->second; 
+    }
+    return usr; 
 }
