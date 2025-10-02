@@ -16,7 +16,7 @@ class MyDataStore : public DataStore
         ~MyDataStore();
         void addProduct(Product* p); 
         void addUser(User* u);
-        User* MyDataStore::getUser(std::string uname); 
+        User* getUser(std::string uname); 
         std::vector<Product*> search(std::vector<std::string>& terms, int type);
         void dump(std::ostream& ofile);
         void add_to_cart(std::string uname, Product* p); 
@@ -28,7 +28,7 @@ class MyDataStore : public DataStore
     std::set<Product*> products_;
     std::map<std::string, std::set<Product*>> index; 
     std::map<std::string, std::vector<Product*>> carts_; 
-    vector<Product*> hits; 
+    std::vector<Product*> hits; 
 
 };
 #endif
