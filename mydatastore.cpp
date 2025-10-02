@@ -104,9 +104,9 @@ std::vector<Product*> MyDataStore::search(std::vector<std::string>& terms, int t
         }
     }
 
-    std::set<Product*>::iterator res = result.begin(); {
-        match.push_back(*res); 
-    }
+    std::set<Product*>::iterator res = result.begin();
+    for ( ; res != result.end(); ++res)
+       { match.push_back(*res); }
 
     return match; 
 

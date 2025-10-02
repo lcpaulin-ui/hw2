@@ -44,12 +44,12 @@ std::string Movie::displayString () const {
 
 
 void Movie::dump(std::ostream& os) const {
-    os << category_ << "\n"
-    << name_ << "\n"
-    << price_ << "\n"
-    << qty_ << "\n"
-    << genre_ << "\n"
-    << rating_ << std::endl;
+    os << "movie" << std::endl;
+    os << name_ << std::endl;
+    os << price_ << std::endl;
+    os << qty_ << std::endl;
+    os << genre_<< std::endl;
+    os << rating_ << std::endl;
 }
 
 bool Movie::isMatch(std::vector<std::string>& searchTerms) const{
