@@ -7,7 +7,7 @@
 #include "product.h"
 
 Book::Book(const std::string& name, const std::string& author, const std::string ISBN, 
-    const std::string category, double price, int qty) : Product(category, name, price, qty), ISBN_(ISBN), author_(author) { 
+    const std::string category, double price, int qty) : Product(category, name, price, qty), author_(author), ISBN_(ISBN) { 
     }
 
 Book::~Book () {}

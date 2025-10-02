@@ -20,7 +20,7 @@ class MyDataStore : public DataStore
         std::vector<Product*> search(std::vector<std::string>& terms, int type);
         void dump(std::ostream& ofile);
         void add_to_cart(std::string uname, Product* p); 
-        std::vector<Product*> getCart(std::string uname); 
+        std::vector<Product*>& getCart(std::string uname); 
 
     private: 
     std::set<User*> users_;
