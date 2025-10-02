@@ -120,14 +120,15 @@ void MyDataStore::add_to_cart(std::string uname, Product* p) {
     carts_[uname].push_back(p); 
 }
 
-std::vector<Product*> MyDataStore::getCart(std::string uname){
-    std::map<std::string, std::vector<Product*>>::iterator it = carts_.begin(); 
-    std::vector<Product*> prods; 
-    it = carts_.find(uname); 
-    if (it != carts_.end()){
-        prods = it->second; 
-    }
-    return prods; 
+std::vector<Product*>& MyDataStore::getCart(std::string uname){
+    // std::map<std::string, std::vector<Product*>>::iterator it = carts_.begin(); 
+    // std::vector<Product*> prods; 
+    // it = carts_.find(uname); 
+    // if (it != carts_.end()){
+    //     prods = it->second; 
+    // }
+    // return prods; 
+    return carts_[uname]; 
 }
 
 User* MyDataStore::getUser(std::string uname){
