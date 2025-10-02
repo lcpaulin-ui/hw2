@@ -6,6 +6,7 @@
 #include <iomanip>
 #include <algorithm>
 #include "product.h"
+#include "mydatastore.h"
 #include "db_parser.h"
 #include "product_parser.h"
 #include "util.h"
@@ -29,7 +30,7 @@ int main(int argc, char* argv[])
      * Declare your derived DataStore object here replacing
      *  DataStore type to your derived type
      ****************/
-    DataStore ds;
+    MyDataStore ds; 
 
 
 
@@ -100,6 +101,70 @@ int main(int argc, char* argv[])
                 done = true;
             }
 	    /* Add support for other commands here */
+            else if ( cmd == "ADD") {
+                    string user;
+                    if(ss >> user ) {
+                    user = convToLower(user);
+                    }
+                    else{
+                        std::cout << "Invalid request" << std::endl;
+                    }
+                    int idx;
+                    Product* add;
+                    if (ss >> idx ){
+                       add = hits[idx]; 
+                       ds.add_to_cart(user, add);
+                    }
+                    else{
+                        std::cout << "Invalid request" << std::endl;
+                    }
+            }
+
+            else if ( cmd == "VIEWCART") {
+                string user;
+                if(ss >> user ) {
+                user = convToLower(user);
+                std::vector<Product*> cart = ds.getCart(user); 
+                std::vector<Product*>::iterator it = cart.begin(); 
+                if (cart.size() != 0){
+                    int cnt = 1; 
+                    for ( ; it != cart.end(); ++it){
+                        std::cout << "Item " << cnt << std::endl;
+                        std::cout << (*it)->displayString() << std::endl; 
+                    }
+                }
+
+                }
+                else{
+                    std::cout << "Invalid username" << std::endl;
+                }
+        }
+            else if ( cmd == "BUYCART") {
+                string user;
+                if(ss >> user ) {
+                user = convToLower(user);
+                std::vector<Product*> cart = ds.getCart(user); 
+                std::vector<Product*>::iterator it = cart.begin(); 
+                if (cart.size() != 0){
+                    // iterate through cart 
+                    for ( ; it != cart.end(); ++it){
+                        
+                        // remove from cart, reduce qty by 1, debit price from user's credit 
+                        Product* item = *it; 
+                        // if in stock & if enough money 
+                        if (item->getQty() > 0 &&  )
+                    }
+
+
+                }
+
+                }
+                else{
+                    std::cout << "Invalid username" << std::endl;
+                }
+        }
+
+
 
 
 

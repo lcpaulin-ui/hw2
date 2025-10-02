@@ -3,6 +3,8 @@
 #include <cctype>
 #include <algorithm>
 #include "util.h"
+#include "product.h"
+#include "book.h"
 
 using namespace std;
 std::string convToLower(std::string src)
@@ -52,44 +54,47 @@ std::set<std::string> parseStringToWords(string rawWords)
         while (*curr != *end && *curr != ' '){
             ++curr; 
         }
-        std::string keyw = rawWords.substr(beg - rawWords.begin(), curr - beg); 
-        if(keyw.length() >= 2) {
-        keywords.insert(keyw);
-        }
+        std::string keyw = rawWords.substr(beg - rawWords.begin(), curr - beg);
+        if (keyw.length() >= 2)
+        {keywords.insert(keyw);}
         beg = curr; 
     
     }
 
     return keywords; 
 }
+
+int main()
+{
+//    std::set<string> keywords; 
+   
+//    keywords = parseStringToWords("i'm jill"); 
+
+//    set<string>::iterator it;
+//    for (it = keywords.begin() ; it != keywords.end(); ++it) {
+//     std::cout << *it << std::endl;
+//    }
+
+//    std::set<string> s1 = {"billie", "crazy rich asians", "batman", "i'm halle b"}; 
+//    std::set<string> s2 = {"crazy rich asians", "crazy rich asians", "batman", "billie", "me"}; 
+
+//    std::set<string> inter = setIntersection(s1, s2);
+//    std::set<string> uni = setUnion(s1, s2);
+
+//    for (auto x : inter)
+//         std::cout << x << std::endl;
+//     for (auto x : uni)
+//         std::cout << x << std::endl;
+
     
-    
 
-/**************************************************
- * COMPLETED - You may use the following functions
- **************************************************/
 
-// Used from http://stackoverflow.com/questions/216823/whats-the-best-way-to-trim-stdstring
-// trim from start
-std::string &ltrim(std::string &s) {
-    s.erase(s.begin(), 
-	    std::find_if(s.begin(), 
-			 s.end(), 
-			 std::not1(std::ptr_fun<int, int>(std::isspace))));
-    return s;
+
+
+
+
+
+
+    return 0;
 }
 
-// trim from end
-std::string &rtrim(std::string &s) {
-    s.erase(
-	    std::find_if(s.rbegin(), 
-			 s.rend(), 
-			 std::not1(std::ptr_fun<int, int>(std::isspace))).base(), 
-	    s.end());
-    return s;
-}
-
-// trim from both ends
-std::string &trim(std::string &s) {
-    return ltrim(rtrim(s));
-}

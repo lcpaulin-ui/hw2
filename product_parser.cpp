@@ -82,6 +82,8 @@ void ProductParser::parseCommonProduct(std::istream& is,
 
 ProductBookParser::ProductBookParser() : ProductParser()
 {
+
+
 }
 
 Product* ProductBookParser::parseSpecificProduct(std::string category,
@@ -131,9 +133,9 @@ std::string ProductBookParser::categoryID()
 Product* ProductBookParser::makeProduct()
 {
 
-
+    Product* book = new Book(isbn_, author_, categoryID(), prodName_, price_, qty_);
+    return book; 
 }
-
 
 ProductClothingParser::ProductClothingParser()
 {
@@ -186,10 +188,9 @@ std::string ProductClothingParser::categoryID()
 Product* ProductClothingParser::makeProduct()
 {
 
-
-
+    Product* clothes = new Clothing(size_, brand_, categoryID(), prodName_, price_, qty_);
+    return clothes; 
 }
-
 
 
 ProductMovieParser::ProductMovieParser()
@@ -245,6 +246,6 @@ std::string ProductMovieParser::categoryID()
  */
 Product* ProductMovieParser::makeProduct()
 {
-
-
+    Product* movie = new Movie(genre_, rating_, categoryID(), prodName_, price_, qty_);
+    return movie; 
 }

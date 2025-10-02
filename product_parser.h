@@ -25,6 +25,7 @@ public:
      */
     virtual std::string categoryID() = 0;
 
+    
 protected:
     /**
      * Parses the common data members of a product
