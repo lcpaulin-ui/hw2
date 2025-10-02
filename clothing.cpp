@@ -34,10 +34,11 @@ std::set<std::string> Clothing::keywords() const {
 
 std::string Clothing::displayString () const {
 
-    std::string display = "{ name: " + name_ + ",\n" 
-    + "info: Size: " +   size_ + " Brand : " + brand_ + ",\n" 
+    std::string display = "{name: " + name_ + ",\n" 
+    +" info: Size: " +   size_ + " Brand : " + brand_ + ",\n" 
     + " stock: " + std::to_string(qty_) + ",\n" + 
-    " price: " + std::to_string(price_) + "}"; 
+    " price: " + std::to_string(price_) + "\n" +
+    "}"; 
     return display;
 }
 

@@ -28,7 +28,6 @@ MyDataStore::~MyDataStore() {
         delete *it; 
     }
     users_.clear();
-    carts_.clear();
     uname_match.clear();  
 
 }
