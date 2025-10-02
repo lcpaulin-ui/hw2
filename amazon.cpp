@@ -112,7 +112,7 @@ int main(int argc, char* argv[])
                     int idx;
                     Product* add; 
                     if (ss >> idx ){
-                       add = hits[idx]; 
+                       add = hits[idx - 1]; 
                        ds.add_to_cart(user, add);
                     }
                     else{
@@ -124,13 +124,14 @@ int main(int argc, char* argv[])
                 string user;
                 if(ss >> user ) {
                 user = convToLower(user);
-                std::vector<Product*> cart = ds.getCart(user); 
+                std::vector<Product*>& cart = ds.getCart(user); 
                 std::vector<Product*>::iterator it = cart.begin(); 
                 if (cart.size() != 0){
                     int cnt = 1; 
                     for ( ; it != cart.end(); ++it){
                         std::cout << "Item " << cnt << std::endl;
-                        std::cout << (*it)->displayString() << std::endl; 
+                        std::cout << (*it)->displayString() << std::endl;
+                        cnt++; 
                     }
                 }
 
@@ -143,7 +144,7 @@ int main(int argc, char* argv[])
                 string user;
                 if(ss >> user ) {
                 user = convToLower(user);
-                std::vector<Product*> cart = ds.getCart(user); 
+                std::vector<Product*>& cart = ds.getCart(user); 
                 std::vector<Product*>::iterator vec; 
 
                 std::vector<Product*>::iterator it = cart.begin(); 
@@ -194,6 +195,8 @@ int main(int argc, char* argv[])
         }
 
     }
+    delete productSectionParser;
+    delete userSectionParser; 
     return 0;
 }
 
