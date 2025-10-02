@@ -6,10 +6,8 @@
 #include "clothing.h"
 #include "product.h"
 
-Clothing::Clothing(const std::string& size, const std::string& brand, const std::string category, 
-    const std::string name, double price, int qty) : Product(category, name, price, qty) {
-        size_ = size;
-        brand_ = brand; 
+Clothing::Clothing(const std::string& name, const std::string& size, const std::string brand, 
+    const std::string category, double price, int qty) : Product(category, name, price, qty), size_(size), brand_(brand) {
     }
 Clothing::~Clothing () {}
 
@@ -36,9 +34,10 @@ std::set<std::string> Clothing::keywords() const {
 
 std::string Clothing::displayString () const {
 
-    std::string display = name_ + "\n" 
-    + "Brand: " +  brand_  + " Size : " + size_ + "\n" 
-    + std::to_string(price_) + " " + std::to_string(qty_) + " left" "\n";
+    std::string display = "{ name: " + name_ + ",\n" 
+    + "info: Size: " +   size_ + " Brand : " + brand_ + ",\n" 
+    + " stock: " + std::to_string(qty_) + ",\n" + 
+    " price: " + std::to_string(price_) + "}"; 
     return display;
 }
 

@@ -6,10 +6,8 @@
 #include "book.h"
 #include "product.h"
 
-Book::Book(const std::string& ISBN, const std::string& author, const std::string category, 
-    const std::string name, double price, int qty) : Product(category, name, price, qty) {
-        ISBN_ = ISBN;
-        author_ = author; 
+Book::Book(const std::string& name, const std::string& author, const std::string ISBN, 
+    const std::string category, double price, int qty) : Product(category, name, price, qty), ISBN_(ISBN), author_(author) { 
     }
 
 Book::~Book () {}
@@ -39,9 +37,10 @@ std::set<std::string> Book::keywords() const {
 
 std::string Book::displayString () const {
 
-    std::string display = name_ + "\n" 
-    + "Author: " +   author_ + " ISBN : " + ISBN_ + "\n" 
-    + std::to_string(price_) + " " + std::to_string(qty_) + " left" "\n";
+    std::string display = "{ name: " + name_ + ",\n" 
+    +"info: Author: " +   author_ + " ISBN : " + ISBN_ + ",\n" 
+    + " stock: " + std::to_string(qty_) + ",\n" + 
+    " price: " + std::to_string(price_) + "}"; 
     return display; 
 }
 

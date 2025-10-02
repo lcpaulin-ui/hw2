@@ -6,10 +6,9 @@
 #include "movie.h"
 #include "product.h"
 
-Movie::Movie(const std::string& genre, const std::string& rating, const std::string category, 
-    const std::string name, double price, int qty) : Product(category, name, price, qty) {
-        genre_ = genre;
-        rating_ = rating; 
+Movie::Movie(const std::string& name, const std::string& genre, const std::string rating, 
+    const std::string category, double price, int qty) : Product(category, name, price, qty), genre_(genre), rating_(rating) {
+
     }
 Movie::~Movie () {}
 
@@ -36,10 +35,11 @@ std::set<std::string> Movie::keywords() const {
 }
 
 std::string Movie::displayString () const {
-        std::string display = name_ + "\n" 
-        + "Genre: " +   genre_ + " Rating : " + rating_ + "\n" 
-        + std::to_string(price_) + " " + std::to_string(qty_) + " left" "\n";
-        return display;
+         std::string display = "{ name: " + name_ + ",\n" 
+        +" info: Genre: " +   genre_ + " Rating : " + rating_ + ",\n" 
+        + " stock: " + std::to_string(qty_) + ",\n" + 
+        " price: " + std::to_string(price_) + "}"; 
+        return display; 
 }
 
 

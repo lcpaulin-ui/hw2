@@ -13,8 +13,8 @@ class Clothing : public Product {
 
 public: 
     Clothing ();
-    Clothing(const std::string& size, const std::string& brand, const std::string category, 
-        const std::string name, double price, int qty);
+    Clothing(const std::string& name, const std::string& size, const std::string brand, 
+        const std::string category, double price, int qty);
     virtual ~Clothing(); 
     virtual std::set<std::string> keywords() const ;
     virtual std::string displayString () const;
