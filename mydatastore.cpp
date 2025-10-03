@@ -76,22 +76,17 @@ std::vector<Product*> MyDataStore::search(std::vector<std::string>& terms, int t
 
     x = terms.begin(); 
     it = index.find(*x); 
-    std::string word;
-
-    if (type == 0){     // else, i found a match.
-         word = convToLower(terms[0]);
+    std::string word = convToLower(terms[i]);
     if (index.find(word) != index.end() ){
         result = index[word]; // 
-    }
-
     }
    
 
     // now, just do the set union and / or intersection until the end of the terms
-    int cnt = 0;
-    if (type ==1){cnt = 1;}
-    else {cnt = 0;}
-    for (size_t i = cnt; i < terms.size(); i++){
+    // int cnt = 0;
+    // if (type ==1){cnt = 1;}
+    // else {cnt = 0;}
+    for (size_t i = 1; i < terms.size(); i++){
         word = convToLower(terms[i]);
 
         adding.clear(); // i have to do this bc then if not the and will not work, if i dont find it i add empty vec
