@@ -87,9 +87,9 @@ std::vector<Product*> MyDataStore::search(std::vector<std::string>& terms, int t
     for (size_t i = 1; i < terms.size(); i++){
         word = convToLower(terms[i]);
 
-        adding.clear(); // i have to do this bc then if not the and will not work
+        adding.clear(); // i have to do this bc then if not the and will not work, if i dont find it i add empty vec
         if (index.find(word) != index.end()){
-            adding = index[word]; 
+            adding = index[word]; }
 
             if (type == 0){ //and , inter
                 result = setIntersection(result, adding); 
@@ -97,8 +97,6 @@ std::vector<Product*> MyDataStore::search(std::vector<std::string>& terms, int t
             else if (type == 1){ // or , union 
                 result = setUnion(result, adding); 
             }
-
-        }
     }
     std::vector<Product*> match(result.begin(), result.end()); 
 
