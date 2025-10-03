@@ -76,15 +76,28 @@ std::vector<Product*> MyDataStore::search(std::vector<std::string>& terms, int t
 
     x = terms.begin(); 
     it = index.find(*x); 
+    std::string word; 
 
     // else, i found a match.
-    std::string word = convToLower(terms[0]);
+    int cnt = 0;
+    bool fnd = false; 
+    while (cnt != index.size())
+   {     word = convToLower(terms[cnt]);
     if (index.find(word) != index.end() ){
         result = index[word]; // 
+        fnd = true; 
+        break; 
+    }
+    else {
+        cnt++;
+        }
+    }
+    if (!fnd){
+        return {}; 
     }
 
     // now, just do the set union and / or intersection until the end of the terms
-    for (size_t i = 1; i < terms.size(); i++){
+    for (size_t i = cnt; i < terms.size(); i++){
         word = convToLower(terms[i]);
 
         adding.clear(); // i have to do this bc then if not the and will not work
@@ -99,11 +112,11 @@ std::vector<Product*> MyDataStore::search(std::vector<std::string>& terms, int t
             }
 
         }
-    }
     std::vector<Product*> match(result.begin(), result.end()); 
 
-    
     return match; 
+
+    }
 
 }
 
