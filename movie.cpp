@@ -2,6 +2,7 @@
 #include <sstream>
 #include <cctype>
 #include "util.h"
+#include <iomanip> 
 #include <algorithm>
 #include "movie.h"
 #include "product.h"
@@ -41,6 +42,13 @@ std::string Movie::displayString () const {
         +"Genre: " +   genre_ + " Rating: " + rating_ + "\n" 
         + std::to_string(price_) + " " + std::to_string(qty_) + " left. \n";
         return display;
+
+
+        std::stringstream disp; 
+        disp << name_ <<  "\n" 
+        << "Genre: " <<   genre_ <<  " Rating: " << rating_ <<  "\n" 
+        << std::setprecision(2) << std::fixed << price_ << std::to_string(qty_) << " left. << \n";
+        return disp.str();
 }
 
 
