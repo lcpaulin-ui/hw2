@@ -61,7 +61,7 @@ void MyDataStore::addUser(User* u){
 
 std::vector<Product*> MyDataStore::search(std::vector<std::string>& terms, int type){
 
-    std::vector<Product*> match;
+    //std::vector<Product*> match;
     std::set<Product*> result;
     std::set<Product*> adding;
 
