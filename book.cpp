@@ -38,11 +38,9 @@ std::set<std::string> Book::keywords() const {
 
 std::string Book::displayString () const {
 
-    std::string display = "{name: " + name_ + ",\n" 
-    +" info: Author: " +   author_ + " ISBN : " + ISBN_ + ",\n" 
-    + " stock: " + std::to_string(qty_) + ",\n" + 
-    " price: " + std::to_string(price_) + "\n" +
-    "}"; 
+    std::string display = "name: " + name_ + "\n" 
+    +"Author: " +   author_ + " ISBN: " + ISBN_ + "\n" 
+    + "price: " + std::to_string(price_) + " " + std::to_string(qty_) + " left. \n";
     return display; 
 }
 

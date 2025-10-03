@@ -105,6 +105,7 @@ int main(int argc, char* argv[])
                     string user;
                     if(ss >> user ) {
                     user = convToLower(user);
+                    
                     }
                     else{
                         std::cout << "Invalid request" << std::endl;
@@ -152,7 +153,10 @@ int main(int argc, char* argv[])
 
                 // get user 
                 User* curr_usr = ds.getUser(user);
-
+                if (curr_usr == nullptr){
+                    std::cout << "Invalid username" << std::endl;
+                }
+                else {
                 if (cart.size() != 0){
                     // iterate through cart 
                     while ( it != cart.end() ){
@@ -176,19 +180,10 @@ int main(int argc, char* argv[])
 
 
                 }
-
-                }
-                else{
-                    std::cout << "Invalid username" << std::endl;
-                }
+            }
+            } 
         }
                 
-
-
-
-
-
-
             else {
                 cout << "Unknown command" << endl;
             }
