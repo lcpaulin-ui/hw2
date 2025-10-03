@@ -67,7 +67,7 @@ std::vector<Product*> MyDataStore::search(std::vector<std::string>& terms, int t
     std::set<Product*> adding;
 
     // find 'base' or first one and go from there 
-    if (terms.empty()){
+    if (terms.empty() ){
         return {}; 
     }
 
@@ -90,17 +90,16 @@ std::vector<Product*> MyDataStore::search(std::vector<std::string>& terms, int t
         adding.clear(); // i have to do this bc then if not the and will not work
         if (index.find(word) != index.end()){
             adding = index[word]; 
-        }
 
-        if (type == 0){ //and , inter
-            result = setIntersection(result, adding); 
-        }
-        else if (type == 1){ // or , union 
-            result = setUnion(result, adding); 
+            if (type == 0){ //and , inter
+                result = setIntersection(result, adding); 
+            }
+            else if (type == 1){ // or , union 
+                result = setUnion(result, adding); 
+            }
+
         }
     }
-
-
     std::vector<Product*> match(result.begin(), result.end()); 
 
     
