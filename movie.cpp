@@ -38,16 +38,16 @@ std::set<std::string> Movie::keywords() const {
 }
 
 std::string Movie::displayString () const {
-        std::string display = name_ + "\n" 
-        +"Genre: " +   genre_ + " Rating: " + rating_ + "\n" 
-        + std::to_string(price_) + " " + std::to_string(qty_) + " left. \n";
-        return display;
+        // std::string display = name_ + "\n" 
+        // +"Genre: " +   genre_ + " Rating: " + rating_ + "\n" 
+        // + std::to_string(price_) + " " + std::to_string(qty_) + " left. \n";
+        // return display;
 
 
         std::stringstream disp; 
         disp << name_ <<  "\n" 
         << "Genre: " <<   genre_ <<  " Rating: " << rating_ <<  "\n" 
-        << std::setprecision(2) << std::fixed << price_ << std::to_string(qty_) << " left. << \n";
+        << std::setprecision(2) << std::fixed << price_ << " " << qty_ << " left." << std::endl;
         return disp.str();
 }
 

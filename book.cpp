@@ -50,7 +50,7 @@ std::string Book::displayString () const {
     std::stringstream disp; 
     disp << name_ <<  "\n" 
     << "Author: " <<   author_ <<  " ISBN: " << ISBN_ <<  "\n" 
-    << std::setprecision(2) << std::fixed << price_ << std::to_string(qty_) << " left. << \n";
+    << std::setprecision(2) << std::fixed << price_ << " " << qty_ << " left." << std::endl;
     return disp.str();
 }
 
