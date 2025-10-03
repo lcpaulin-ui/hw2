@@ -105,8 +105,12 @@ int main(int argc, char* argv[])
                     string user;
                     if(ss >> user ) {
                     user = convToLower(user);
+                    if (ds.getUser(user) == NULL ){
+                        std::cout << "Invalid username" << std::endl;
+                    }
                     
                     }
+                    
                     else{
                         std::cout << "Invalid request" << std::endl;
                     }
