@@ -121,7 +121,7 @@ int main(int argc, char* argv[])
                        if (idx >= hits.size()) {
                         std::cout << "Invalid request" <<  std::endl; 
                        }
-                       add = hits[idx]; 
+                       add = hits[idx - 1]; 
                        ds.add_to_cart(user, add);
                     }
                     else{
