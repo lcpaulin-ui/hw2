@@ -35,5 +35,5 @@ void User::deductAmount(double amt)
 
 void User::dump(std::ostream& os)
 {
-    os << name_ << " "  << balance_ << " " << type_ << std::endl;
+    os << name_ << " "  << std::to_string(balance_) << " " << type_ << std::endl;
 }
