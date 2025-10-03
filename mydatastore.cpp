@@ -16,18 +16,22 @@ MyDataStore::MyDataStore() {
 // std::map<std::string, std::vector<Product*>> carts_; 
 // std::vector<Product*> hits; 
 MyDataStore::~MyDataStore() {
+    // avoiding memory errors: db parser is allocating memory so i have to make sure to delete it
+    // i can't delete it twice so, grab one of the vectors that points to allocated memory and then delete that
 
     std::set<Product*>::iterator prod = products_.begin();
     for ( ; prod != products_.end(); ++prod) {
         delete *prod; 
     }
-    products_.clear(); 
+
+
+    products_.clear(); // making size 0 to make sure i'm donw w everytjing
 
     std::map <std::string, User*>::iterator it = uname_match.begin();
     for ( ; it != uname_match.end(); ++it) {
-        delete it->second; 
+        delete it->second; // i can do this bc i'm not deleting member, i'm deleting what it points to
     }
-    users_.clear();
+    users_.clear(); // now i am deleting everything
     uname_match.clear();  
 
 }
@@ -40,7 +44,7 @@ void MyDataStore::addProduct(Product *p){
     
 
     for ( ; it != keys.end(); ++it) {
-        index[convToLower(*it)].insert(p);
+        index[convToLower(*it)].insert(p); // making case insensitive work 
     }  
 }
 
@@ -77,7 +81,7 @@ std::vector<Product*> MyDataStore::search(std::vector<std::string>& terms, int t
 
     x = terms.begin(); 
     it = index.find(*x); 
-    std::string word = convToLower(terms[0]);
+    std::string word = convToLower(terms[0]); // if it's an and search and this product isnt in it, will automatically return empty vec
     if (index.find(word) != index.end() ){
         result = index[word]; // 
     }
@@ -88,20 +92,20 @@ std::vector<Product*> MyDataStore::search(std::vector<std::string>& terms, int t
     // if (type ==1){cnt = 1;}
     // else {cnt = 0;}
     for (size_t i = 1; i < terms.size(); i++){
-        word = convToLower(terms[i]);
+        word = convToLower(terms[i]); // case insensitive 
 
-        adding.clear(); // i have to do this bc then if not the and will not work, if i dont find it i add empty vec
+        adding.clear(); // i have to do this bc then if not the "and" will not work, if i dont find it i add empty vec
         if (index.find(word) != index.end()){
             adding = index[word]; }
 
-            if (type == 0){ //and , inter
+            if (type == 0){ //and , intersection
                 result = setIntersection(result, adding); 
             }
             else if (type == 1){ // or , union 
                 result = setUnion(result, adding); 
             }
     }
-    std::vector<Product*> match(result.begin(), result.end()); 
+    std::vector<Product*> match(result.begin(), result.end()); // matching reutrn type  
 
     
     return match; 
@@ -148,7 +152,7 @@ std::vector<Product*>& MyDataStore::getCart(std::string uname){
 
 User* MyDataStore::getUser(std::string uname){
     std::map<std::string, User*>::iterator it = uname_match.begin(); 
-    User* usr = nullptr; 
+    User* usr = nullptr; // i will check for null if unvalid user name, since i cant send exception
     it = uname_match.find(uname); 
     if (it != uname_match.end()){
         usr = it->second; 

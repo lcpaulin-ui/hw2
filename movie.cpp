@@ -37,6 +37,9 @@ std::set<std::string> Movie::keywords() const {
     return keys;
 }
 
+
+// price is put as 6 decimals when i use to string so using string library to resize it, then concatenating it 
+// to string. 
 std::string Movie::displayString () const {
         // std::string display = name_ + "\n" 
         // +"Genre: " +   genre_ + " Rating: " + rating_ + "\n" 
@@ -59,6 +62,7 @@ std::string Movie::displayString () const {
 }
 
 
+// following database format 
 void Movie::dump(std::ostream& os) const {
     os << "movie" << std::endl;
     os << name_ << std::endl;

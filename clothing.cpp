@@ -25,6 +25,7 @@ std::set<std::string> Clothing::keywords() const {
     std::vector<std::string> ::iterator it = keyw.begin();
     //std::vector<std::string> ::iterator fin = keyw.end();
 
+    // now i have to go through all the terms. 
     for ( ; it != keyw.end() ; ++it ) {
         news = parseStringToWords(*it);
         keys.insert(news.begin(), news.end());
