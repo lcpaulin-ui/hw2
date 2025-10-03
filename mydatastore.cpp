@@ -76,7 +76,7 @@ std::vector<Product*> MyDataStore::search(std::vector<std::string>& terms, int t
 
     x = terms.begin(); 
     it = index.find(*x); 
-    std::string word = convToLower(terms[i]);
+    std::string word = convToLower(terms[0]);
     if (index.find(word) != index.end() ){
         result = index[word]; // 
     }
