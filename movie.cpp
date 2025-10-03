@@ -45,9 +45,10 @@ std::string Movie::displayString () const {
 
 
         std::stringstream disp; 
-        disp << name_ <<  "\n" 
-        << "Genre: " <<   genre_ <<  " Rating: " << rating_ <<  "\n" 
-        << std::setprecision(2) << std::fixed << price_ << " " << qty_ << " left." << std::endl;
+        disp << name_ <<  "\n";
+        disp << "Genre: " <<   genre_ <<  " Rating: " << rating_ <<  "\n" ;
+        disp << std::setprecision(2) << std::fixed << price_ << std::endl;
+        disp << qty_ << " left." << "\n";  
         return disp.str();
 }
 
