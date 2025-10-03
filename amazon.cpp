@@ -130,6 +130,9 @@ int main(int argc, char* argv[])
                 if(ss >> user ) {
                 user = convToLower(user);
                 std::vector<Product*>& cart = ds.getCart(user); 
+                if (ds.getUser(user) == NULL ){
+                    std::cout << "Invalid username" << std::endl;
+                }
                 std::vector<Product*>::iterator it = cart.begin(); 
                 if (cart.size() != 0){
                     int cnt = 1; 
