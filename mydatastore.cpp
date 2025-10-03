@@ -84,9 +84,10 @@ std::vector<Product*> MyDataStore::search(std::vector<std::string>& terms, int t
     }
 
     // now, just do the set union and / or intersection until the end of the terms
-    for (size_t i = 0; i < terms.size(); i++){
+    for (size_t i = 1; i < terms.size(); i++){
         word = convToLower(terms[i]);
 
+        adding.clear(); // i have to do this bc then if not the and will not work
         if (index.find(word) != index.end()){
             adding = index[word]; 
         }
