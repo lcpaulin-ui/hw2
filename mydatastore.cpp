@@ -50,7 +50,8 @@ void MyDataStore::addUser(User* u){
     std::vector<Product*> prods; 
     std::string uname = convToLower(u->getName()); 
     carts_[uname] = prods;
-    uname_match[uname] = u; 
+    uname_match[uname] = u;
+    users_.insert(u);  
 }
 
 /**
