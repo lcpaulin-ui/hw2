@@ -43,13 +43,19 @@ std::string Movie::displayString () const {
         // + std::to_string(price_) + " " + std::to_string(qty_) + " left. \n";
         // return display;
 
+        std::string price_dec = std::to_string(price_);
+        price_dec.std::string::resize(5); 
+        std::string display = name_ + "\n" + "Genre: " + genre_ + " Rating: " + rating_ 
+        + "\n" + price_dec + " " + std::to_string(qty_) + " left." + "\n";
+        return display;
 
-        std::stringstream disp; 
-        disp << name_ <<  "\n";
-        disp << "Genre: " <<   genre_ <<  " Rating: " << rating_ <<  "\n" ;
-        disp << std::setprecision(2) << std::fixed << price_ << std::endl;
-        disp << qty_ << " left." << "\n";  
-        return disp.str();
+
+        // std::stringstream disp; 
+        // disp << name_ <<  "\n";
+        // disp << "Genre: " <<   genre_ <<  " Rating: " << rating_ <<  "\n" ;
+        // disp << std::setprecision(2) << std::fixed << price_ << std::endl;
+        // disp << qty_ << " left." << "\n";  
+        // return disp.str();
 }
 
 

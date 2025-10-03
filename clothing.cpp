@@ -36,11 +36,18 @@ std::set<std::string> Clothing::keywords() const {
 std::string Clothing::displayString () const {
 
     // taking idea of parser: 
-    std::stringstream disp; 
-    disp << name_ <<  "\n" 
-    << "Size: " <<   size_ <<  " Brand: " << brand_ <<  "\n" 
-    << std::setprecision(2) << std::fixed << price_  << " " << qty_ << " left." << std::endl; 
-    return disp.str();
+    // std::stringstream disp; 
+    // disp << name_ <<  "\n" 
+    // << "Size: " <<   size_ <<  " Brand: " << brand_ <<  "\n" 
+    // << std::setprecision(2) << std::fixed << price_  << " " << qty_ << " left." << std::endl; 
+    // return disp.str();
+
+
+    std::string price_dec = std::to_string(price_);
+    price_dec.std::string::resize(5); 
+    std::string display = name_ + "\n" + "Size: " + size_ + " Brand: " + brand_ 
+    + "\n" + price_dec + " " + std::to_string(qty_) + " left." + "\n";
+    return display;
 }
 
 
