@@ -40,7 +40,7 @@ std::set<std::string> parseStringToWords(string rawWords)
     while (beg != end){
 
         // FIRST Get to the next non space char
-        while(*beg != *end && *beg == ' '){
+        while(beg != end && *beg == ' '){
             ++beg; 
         }
         
@@ -49,7 +49,7 @@ std::set<std::string> parseStringToWords(string rawWords)
         }
 
         std::string::iterator curr = beg;
-        while (*curr != *end && *curr != ' '){
+        while (curr != end && *curr != ' '){
             ++curr; 
         }
         std::string keyw = rawWords.substr(beg - rawWords.begin(), curr - beg); 
