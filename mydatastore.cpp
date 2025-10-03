@@ -35,11 +35,12 @@ MyDataStore::~MyDataStore() {
 void MyDataStore::addProduct(Product *p){
     products_.insert(p);
     std::set<std::string> keys = p->keywords();
+
     std::set<std::string>::iterator it = keys.begin(); 
     
 
     for ( ; it != keys.end(); ++it) {
-        index[*it].insert(p);
+        index[convToLower(*it)].insert(p);
     }  
 }
 
