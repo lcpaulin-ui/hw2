@@ -67,7 +67,7 @@ std::vector<Product*> MyDataStore::search(std::vector<std::string>& terms, int t
 
     // find 'base' or first one and go from there 
     if (terms.empty()){
-        //return; 
+        return {}; 
     }
 
     std::vector<std::string>:: iterator x; 
@@ -76,37 +76,32 @@ std::vector<Product*> MyDataStore::search(std::vector<std::string>& terms, int t
     x = terms.begin(); 
     it = index.find(*x); 
 
-    if (it == index.end() && type == 0){
-        return match; 
+    // else, i found a match.
+    std::string word = convToLower(terms[0]);
+    if (index.find(word) != index.end() ){
+        result = index[word]; // 
     }
 
-    // else, i found a match.
-    result = it->second; 
-
     // now, just do the set union and / or intersection until the end of the terms
-    ++x; 
-    
-    for ( ; x != terms.end(); ++x) {
-        it = index.find(*x); 
-        if (it != index.end()){
-            
-            adding = it->second; 
-            if(type == 0){
-                result = setIntersection(result, adding); 
-            }
-            else if (type == 1 ){
-                result = setUnion(result, adding); 
-            }
+    for (size_t i = 0; i < terms.size(); i++){
+        word = convToLower(terms[i]);
 
+        if (index.find(word) != index.end()){
+            adding = index[word]; 
+        }
 
-
+        if (type == 0){ //and , inter
+            result = setIntersection(result, adding); 
+        }
+        else if (type == 1){ // or , union 
+            result = setUnion(result, adding); 
         }
     }
 
-    std::set<Product*>::iterator res = result.begin();
-    for ( ; res != result.end(); ++res)
-       { match.push_back(*res); }
 
+    std::vector<Product*> match(result.begin(), result.end()); 
+
+    
     return match; 
 
 }
@@ -146,12 +141,7 @@ std::vector<Product*>& MyDataStore::getCart(std::string uname){
     // }
     // return prods; 
     uname = convToLower(uname);
-    std::map<std::string, std::vector<Product*>>::iterator it = carts_.find(uname);
-    if (it != carts_.end()){
-        return it->second; 
-     }
-     std::vector<Product*> none; 
-     return none;  
+    return carts_[uname];  
 }
 
 User* MyDataStore::getUser(std::string uname){
