@@ -2,6 +2,7 @@
 #include <sstream>
 #include <cctype>
 #include "util.h"
+#include <iomanip> 
 #include <algorithm>
 #include "clothing.h"
 #include "product.h"
@@ -34,10 +35,12 @@ std::set<std::string> Clothing::keywords() const {
 
 std::string Clothing::displayString () const {
 
-    std::string display = "name: " + name_ + "\n" 
-    +"Size: " +   size_ + " Brand: " + brand_ + "\n" 
-    + "price: " + std::to_string(price_) + " " + std::to_string(qty_) + " left. \n";
-    return display;
+    // taking idea of parser: 
+    std::stringstream disp; 
+    disp << name_ <<  "\n" 
+    << "Size: " <<   size_ <<  " Brand: " << brand_ <<  "\n" 
+    << std::setprecision(2) << std::fixed << price_ << std::to_string(qty_) << " left. << \n";
+    return disp.str();
 }
 
 

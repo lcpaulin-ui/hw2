@@ -2,6 +2,7 @@
 #include <sstream>
 #include <cctype>
 #include "util.h"
+#include <iomanip> 
 #include <algorithm>
 #include "book.h"
 #include "product.h"
@@ -38,10 +39,19 @@ std::set<std::string> Book::keywords() const {
 
 std::string Book::displayString () const {
 
-    std::string display = "name: " + name_ + "\n" 
-    +"Author: " +   author_ + " ISBN: " + ISBN_ + "\n" 
-    + "price: " + std::to_string(price_) + " " + std::to_string(qty_) + " left. \n";
-    return display; 
+    // std::string display = "name: " + name_ + "\n" 
+    // +"Author: " +   author_ + " ISBN: " + ISBN_ + "\n" 
+    // + "price: " + std::to_string(price_) + " " + std::to_string(qty_) + " left. \n";
+
+    // std::string display = name_ + "\n" + 
+    // +"Author: " +   author_ + " ISBN: " + ISBN_ + "\n" 
+    // + std::to_string(price_) + " " + std::to_string(qty_) + " left. \n";
+    // return display; 
+    std::stringstream disp; 
+    disp << name_ <<  "\n" 
+    << "Author: " <<   author_ <<  " ISBN: " << ISBN_ <<  "\n" 
+    << std::setprecision(2) << std::fixed << price_ << std::to_string(qty_) << " left. << \n";
+    return disp.str();
 }
 
 
