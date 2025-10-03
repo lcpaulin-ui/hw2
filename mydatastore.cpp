@@ -23,9 +23,9 @@ MyDataStore::~MyDataStore() {
     }
     products_.clear(); 
 
-    std::set<User*>::iterator it = users_.begin();
-    for ( ; it != users_.end(); ++it) {
-        delete *it; 
+    std::map <std::string, User*>::iterator it = uname_match.begin();
+    for ( ; it != uname_match.end(); ++it) {
+        delete it->second; 
     }
     users_.clear();
     uname_match.clear();  
