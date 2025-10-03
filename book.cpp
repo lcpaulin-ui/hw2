@@ -47,11 +47,16 @@ std::string Book::displayString () const {
     // +"Author: " +   author_ + " ISBN: " + ISBN_ + "\n" 
     // + std::to_string(price_) + " " + std::to_string(qty_) + " left. \n";
     // return display; 
-    std::stringstream disp; 
-    disp << name_ <<  "\n";
-    disp << "Author: "  <<   author_ <<  " ISBN: " << ISBN_ <<  "\n"; 
-    disp << std::setprecision(2) << std::fixed << price_ << " " << qty_ << " left." << std::endl;
-    return disp.str();
+    std::string price_dec = std::to_string(price_);
+    price_dec.std::string::resize(5); 
+    std::string display = name_ + "\n" + "Author: " + author_ + " ISBN: " + ISBN_ 
+    + "\n" + price_dec + " " + std::to_string(qty_) + " left." + "\n"; 
+
+    // std::stringstream disp; 
+    // disp << name_ <<  "\n";
+    // disp << "Author: "  <<   author_ <<  " ISBN: " << ISBN_ <<  "\n"; 
+    // disp << std::setprecision(2) << std::fixed << price_ << " " << qty_ << " left." << std::endl;
+    // return disp.str();
 }
 
 
